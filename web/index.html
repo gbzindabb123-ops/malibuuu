@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Malibu Roleplay • Website</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@300;500;700&family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="bg-orb orb1"></div>
+  <div class="bg-orb orb2"></div>
+
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo">M</div>
+      <div class="brand-text">
+        <div class="title">MALIBU ROLEPLAY</div>
+      </div>
+    </div>
+
+    <nav class="nav">
+      <button class="nav-btn active" data-page="home">Página Inicial</button>
+      <button class="nav-btn" data-page="store">Loja</button>
+      <button class="nav-btn" data-page="rules">Regras</button>
+      <button class="nav-btn" data-page="team">Equipe</button>
+      <button class="nav-btn cart-btn" data-page="checkout">
+        Carrinho <span class="pill" id="cartCount">0</span>
+      </button>
+
+      <button class="btn primary" id="btnLogin">Login com Discord</button>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="page show" id="page-home">
+      <div class="banner card">
+        <div class="banner-overlay">
+          <div class="banner-left">
+            <div class="banner-kicker">MALIBU ROLEPLAY</div>
+          </div>
+          <div class="banner-right">
+            <button class="btn primary" id="btnBannerStore">Loja</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero card">
+        <div class="hero-left">
+          <h1>Bem-vindo ao <span class="neon">Malibu Roleplay</span> — RP <span class="neon">E</span>  PVP.</h1>
+          <p class="muted">
+            Um servidor feito para imersão, economia equilibrada e experiência estável .
+          </p>
+          <div class="hero-actions">
+            <a class="btn primary" href="#" id="btnGoStore">Ver Loja</a>
+            <a class="btn ghost" href="#" id="btnCopyIP">Copiar Connect</a>
+          </div>
+
+          <div class="stats">
+            <div class="stat">
+              <div class="stat-num">+120</div>
+              <div class="stat-label">Players online</div>
+            </div>
+            <div class="stat">
+              <div class="stat-num">24/7</div>
+              <div class="stat-label">Uptime</div>
+            </div>
+            <div class="stat">
+              <div class="stat-num">Anti-Cheat</div>
+              <div class="stat-label">Proteção</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-right">
+          <div class="poster">
+            <div class="poster-top">
+              <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+              <span class="poster-title">DASHBOARD</span>
+            </div>
+            <div class="poster-body">
+              <div class="tag">• Economia balanceada</div>
+              <div class="tag">• Staff ativa</div>
+              <div class="tag">• RP + PVP</div>
+              <div class="tag">• Eventos semanais</div>
+              <div class="divider"></div>
+              <div class="muted small">Dica: conecte via F8:</div>
+              <code class="codebox">connect (IP ainda não definido)</code>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid-3">
+        <div class="card feature">
+          <h3>Concessionária</h3>
+          <p class="muted">Concessionária com deversos carros e motos, basta escolher o seu!</p>
+        </div>
+        <div class="card feature">
+          <h3>Mercado Pago</h3>
+          <p class="muted">PIX + cartão/débito/crédito (checkout do MP).</p>
+        </div>
+        <div class="card feature">
+          <h3>Entrega manual</h3>
+          <p class="muted">Após pagar, abra ticket no Discord com e-mail + item comprado.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="page" id="page-store">
+      <div class="card header-row">
+        <div>
+          <h2>Loja</h2>
+          <p class="muted">Adicione itens e pague com Mercado Pago.</p>
+        </div>
+        <div class="search">
+          <input id="searchInput" placeholder="Buscar produto..." />
+        </div>
+      </div>
+
+      <div class="tabs" id="categoryTabs"></div>
+
+      <div class="products" id="products"></div>
+    </section>
+
+    <section class="page" id="page-rules">
+      <div class="card">
+        <h2>Regras do Servidor</h2>
+        <p class="muted">RP + PVP (com limites). Adapte conforme o seu servidor.</p>
+
+        <div class="rules">
+          <div class="rule"><h4>1) Respeito</h4><p>Proibido racismo, preconceito, assédio e ameaças.</p></div>
+          <div class="rule"><h4>2) RDM/VDM</h4><p>Proibido matar sem contexto RP e usar carro para atropelar de propósito.</p></div>
+          <div class="rule"><h4>3) Meta/Power Gaming</h4><p>Sem usar info de fora do jogo e sem ações impossíveis.</p></div>
+          <div class="rule"><h4>4) Safe Zones</h4><p>Sem trocação em áreas seguras definidas pela staff.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page" id="page-team">
+      <div class="card">
+        <h2>Equipe</h2>
+        <p class="muted">Conheça a liderança do Malibu Roleplay.</p>
+        <div class="team" id="teamCards"></div>
+      </div>
+    </section>
+
+    <section class="page" id="page-checkout">
+      <div class="grid-2">
+        <div class="card">
+          <h2>Seu Carrinho</h2>
+          <div id="cartItems" class="cart"></div>
+
+          <div class="cart-total">
+            <span>Total</span>
+            <strong id="cartTotal">R$ 0,00</strong>
+          </div>
+
+          <div class="row">
+            <button class="btn ghost" id="btnClearCart">Limpar carrinho</button>
+            <button class="btn primary" id="btnGoStore2">Adicionar mais itens</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>Pagamento</h2>
+          <p class="muted small">Pagamento via <strong>Mercado Pago</strong> (PIX + cartão).</p>
+
+          <div class="divider"></div>
+
+          <label class="field">
+            <span>Nome do comprador</span>
+            <input id="buyerName" placeholder="Seu nome" />
+          </label>
+          <label class="field">
+            <span>E-mail</span>
+            <input id="buyerEmail" placeholder="seuemail@dominio.com" />
+          </label>
+
+          <button class="btn primary wide" id="btnPay">Pagar agora</button>
+
+          <div class="muted small" style="margin-top:10px">
+            Após o pagamento aprovado, abra um ticket no Discord com seu e-mail e o item comprado.
+            A entrega é feita manualmente pela staff.
+          </div>
+
+          <div class="toast" id="toast"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span class="muted small">© <span id="year"></span> Malibu Roleplay • Website estilo FiveM</span>
+  </footer>
+
+  <script src="./app.js"></script>
+</body>
+</html>
