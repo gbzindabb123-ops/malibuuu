@@ -382,7 +382,3 @@ async function refreshDiscordUserUI() {
     if (userBox) userBox.style.display = "none";
   }
 }
-
-refreshDiscordUserUI();
-  // Aqui você pode configurar a lógica real de integração com o Discord (exemplo usando OAuth2)
-});
