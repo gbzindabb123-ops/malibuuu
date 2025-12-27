@@ -288,3 +288,60 @@ body{
   display:block;
 }
 
+
+
+/* ===== Discord Login UI ===== */
+.userbox{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:8px 10px;
+  border-radius:14px;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.10);
+  backdrop-filter: blur(6px);
+}
+.userbox-avatar{
+  width: 42px;
+  height: 42px;
+  border-radius: 999px;
+  object-fit: cover;
+  border: 1px solid rgba(255,255,255,.16);
+}
+.userbox-meta{
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+  line-height:1;
+}
+.userbox-row{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.userbox-name{
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.discord-badge{
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.15);
+  background: rgba(88,101,242,.12);
+  color: #cfd6ff;
+  letter-spacing: .2px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.discord-badge::before{
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #5865F2;
+  box-shadow: 0 0 12px rgba(88,101,242,.65);
+}
