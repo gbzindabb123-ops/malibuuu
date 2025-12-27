@@ -382,3 +382,5 @@ async function refreshDiscordUserUI() {
     if (userBox) userBox.style.display = "none";
   }
 }
+
+refreshDiscordUserUI();
