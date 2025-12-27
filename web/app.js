@@ -1,5 +1,5 @@
 // ===== Malibu Roleplay Config =====
-const DISCORD_INVITE_URL = "https://discord.gg/Fa7ezQwDa2";
+const DISCORD_INVITE_URL = ""; // ex: "https://discord.gg/SEULINK"
 const CONNECT_CMD = ""; // quando tiver IP: "connect SEU_IP_AQUI:30120"
 
 const pages = ["home","store","rules","team","checkout"];
@@ -331,8 +331,58 @@ function renderCategoryTabs(){
   });
 }
 
-// Função para o login com Discord (mockup)
-document.getElementById("btnLogin").addEventListener("click", () => {
-  alert("Redirecionando para login com Discord...");
+// ===== Login com Discord (Netlify Functions) =====
+const btnLogin = document.getElementById("btnLogin");
+const userBox = document.getElementById("userBox");
+const btnLogout = document.getElementById("btnLogout");
+
+if (btnLogin) {
+  btnLogin.addEventListener("click", () => {
+    window.location.href = "/.netlify/functions/discord-auth";
+  });
+}
+
+if (btnLogout) {
+  btnLogout.addEventListener("click", async () => {
+    await fetch("/.netlify/functions/logout");
+    window.location.reload();
+  });
+}
+
+// Atualiza UI com base no cookie de sessão (discord_user)
+async function refreshDiscordUserUI() {
+  try {
+    const res = await fetch("/.netlify/functions/me", { cache: "no-store" });
+    const data = await res.json();
+
+    if (!data.logged) {
+      if (btnLogin) btnLogin.style.display = "inline-flex";
+      if (userBox) userBox.style.display = "none";
+      return;
+    }
+
+    if (btnLogin) btnLogin.style.display = "none";
+    if (userBox) userBox.style.display = "flex";
+
+    const usernameEl = document.getElementById("username");
+    const avatarEl = document.getElementById("avatar");
+
+    if (usernameEl) usernameEl.textContent = data.user.username;
+
+    if (avatarEl) {
+      avatarEl.src = `https://cdn.discordapp.com/avatars/${data.user.id}/${data.user.avatar}.png`;
+      avatarEl.onerror = () => {
+        // fallback caso não tenha avatar custom
+        avatarEl.src = "https://cdn.discordapp.com/embed/avatars/0.png";
+      };
+    }
+  } catch (e) {
+    // Se as functions não estiverem deployadas ainda, só não quebra o site.
+    if (btnLogin) btnLogin.style.display = "inline-flex";
+    if (userBox) userBox.style.display = "none";
+  }
+}
+
+refreshDiscordUserUI();
   // Aqui você pode configurar a lógica real de integração com o Discord (exemplo usando OAuth2)
 });
