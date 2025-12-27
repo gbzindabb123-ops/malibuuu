@@ -1,5 +1,5 @@
 // ===== Malibu Roleplay Config =====
-const DISCORD_INVITE_URL = ""; // ex: "https://discord.gg/SEULINK"
+const DISCORD_INVITE_URL = "https://discord.gg/Fa7ezQwDa2";
 const CONNECT_CMD = ""; // quando tiver IP: "connect SEU_IP_AQUI:30120"
 
 const pages = ["home","store","rules","team","checkout"];
